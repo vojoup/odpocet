@@ -3,8 +3,8 @@
 cas="30"
 text="Odpocet skoncil!"
 
-usage="$(basename "$0") [-h] [-t n, -u string] script na odpocet
-    where:
+usage="$(basename "$0") [-h] [-t n, -u string] script, ktery simuluje timer
+    prepinace:
         -h  shows this help
         -t  nastavi cas na n vterin
         -u  text upozorneni "
@@ -18,7 +18,7 @@ while getopts ':ht:u:' option; do
            ;;
         u) text="$OPTARG"
            ;;
-        :) echo "Illegal option : -$OPTARG" >&2
+        :) echo "Neznamy prepinac: -$OPTARG" >&2
            echo "$usage" >&2
            exit 1
            ;;
