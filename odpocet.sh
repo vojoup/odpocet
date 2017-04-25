@@ -8,7 +8,8 @@ usage="$(basename "$0") [-h] [-t n, -u string] script, ktery simuluje timer
     prepinace:
         -h  shows this help
         -t  nastavi cas na n vterin
-        -u  text upozorneni "
+        -u  text upozorneni 
+        -b spusteni scriptu napozadi"
 
 while getopts ':bht:u:' option; do
     case "$option" in

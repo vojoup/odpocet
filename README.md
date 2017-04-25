@@ -5,3 +5,4 @@ Dostupne prepinace nyni jsou:
     -h vypise napovedu ke scriptu
     -t upravi cas odpoctu na zadanou delku (v sekundach)
     -u upravi text upozorneni na zadany string
+    -b script bezi na pozadi
