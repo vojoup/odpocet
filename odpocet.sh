@@ -1,5 +1,6 @@
 #!/bin/bash
- 
+
+back="0"
 cas="30"
 text="Odpocet skoncil!"
 
@@ -9,8 +10,10 @@ usage="$(basename "$0") [-h] [-t n, -u string] script, ktery simuluje timer
         -t  nastavi cas na n vterin
         -u  text upozorneni "
 
-while getopts ':ht:u:' option; do
+while getopts ':bht:u:' option; do
     case "$option" in
+        b) back="1"
+           ;;
         h) echo "$usage"
            exit
            ;;
@@ -26,5 +29,9 @@ while getopts ':ht:u:' option; do
 done
 
 shift $((OPTIND - 1 ))
-
-sleep "$cas" && notify-send "$text"
+if [ $back -eq 0 ]
+then
+    sleep "$cas" && notify-send "$text"
+else
+    $(sleep "$cas" && notify-send "$text") &
+fi
