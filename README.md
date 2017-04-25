@@ -1,3 +1,4 @@
+# Timer
 Script, kteri simuluje funkcnost timeru. 
 Defaultni odpocitava 30 vterin a pak posle systemovou notifikaci s textem "Odpocet skoncil!".
 Cas a text lze upravovat pomoci prepinacu.
