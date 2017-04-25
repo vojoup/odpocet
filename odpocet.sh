@@ -1,12 +1,30 @@
 #!/bin/bash
  
-# v argumentu dostane pocet vterin kolik ma pockat
-# po skonceni odpoctu posle systemovou notifikaci s textem "Odpocet skoncil"
-if [ $# -eq 1 ]
-then 
-    sleep "$1" && notify-send "Odpocet skoncil"
-else
-   echo "Nezadan zadny argument!"
-   echo "Zadej prave jedno cislo"
-   exit 1;
-fi
+cas="30"
+text="Odpocet skoncil!"
+
+usage="$(basename "$0") [-h] [-t n, -u string] script na odpocet
+    where:
+        -h  shows this help
+        -t  nastavi cas na n vterin
+        -u  text upozorneni "
+
+while getopts ':ht:u:' option; do
+    case "$option" in
+        h) echo "$usage"
+           exit
+           ;;
+        t) cas="$OPTARG"
+           ;;
+        u) text="$OPTARG"
+           ;;
+        :) echo "Illegal option : -$OPTARG" >&2
+           echo "$usage" >&2
+           exit 1
+           ;;
+    esac
+done
+
+shift $((OPTIND - 1 ))
+
+sleep "$cas" && notify-send "$text"
